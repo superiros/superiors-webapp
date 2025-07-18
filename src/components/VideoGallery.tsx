@@ -6,36 +6,36 @@ const VideoGallery = () => {
   const [videos, setVideos] = useState([
     {
       id: 1,
-      src: '/videos/vid1.mp4', // Replace with your actual video filename
+      src: '/videos/video1.mp4', // Replace with your actual video filename
       thumbnail: '/thumbnails/thumb1.jpg', // Optional: poster image
-      duration: '0:13',
+      duration: '0:43',
       isPlaying: true,
       isMuted: true,
-      title: 'Your Video Title 1'
+      title: 'Zepto'
     },
     {
       id: 2,
-      src: '/videos/vid1.mp4', // Replace with your actual video filename
+      src: '/videos/video2.mp4', // Replace with your actual video filename
       thumbnail: '/thumbnails/thumb2.jpg',
-      duration: '0:17',
+      duration: '0:31',
       isPlaying: true,
       isMuted: true,
       title: 'I JUST MADE $65,000 SELLING SOMETHING'
     },
     {
       id: 3,
-      src: '/videos/vid1.mp4', // Replace with your actual video filename
+      src: '/videos/video3.mp4', // Replace with your actual video filename
       thumbnail: '/thumbnails/thumb3.jpg',
-      duration: '0:17',
+      duration: '1:05',
       isPlaying: true,
       isMuted: true,
       title: 'RECENT REALIZATIONS FOR THE 50 YO ME'
     },
     {
       id: 4,
-      src: '/videos/vid1.mp4', // Replace with your actual video filename
+      src: '/videos/video4.mp4', // Replace with your actual video filename
       thumbnail: '/thumbnails/thumb4.jpg',
-      duration: '0:37',
+      duration: '0:34',
       isMuted: true,
       isPlaying: true,
       title: 'WANT TO LOSE'
@@ -183,11 +183,11 @@ const VideoGallery = () => {
               </div>
 
               {/* Title Overlay */}
-              {video.title && video.title !== `Video ${video.id}` && (
+              {/* {video.title && video.title !== `Video ${video.id}` && (
                 <div className="video-title">
                   {video.title}
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         ))}
