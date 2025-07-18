@@ -5,41 +5,40 @@ import { useState, useEffect } from 'react';
 export const StatsSection = () => {
   const { ref, inView } = useInView({
     threshold: 0.1,
-    triggerOnce: true
+    triggerOnce: true,
   });
 
   const stats = [
-    { 
-      number: 500, 
-      suffix: '%', 
+    {
+      number: 500,
+      suffix: '%',
       label: 'Average Social Media Growth',
-      description: 'Follower increase in 6 months'
+      description: 'Follower increase in 6 months',
     },
-    { 
-      number: 150, 
-      suffix: '+', 
+    {
+      number: 150,
+      suffix: '+',
       label: 'Websites Delivered',
-      description: 'High-performance sites launched'
+      description: 'High-performance sites launched',
     },
-    { 
-      number: 98, 
-      suffix: '%', 
+    {
+      number: 98,
+      suffix: '%',
       label: 'Client Satisfaction Rate',
-      description: 'Happy clients recommend us'
+      description: 'Happy clients recommend us',
     },
-    { 
-      number: 24, 
-      suffix: '/7', 
+    {
+      number: 24,
+      suffix: '/7',
       label: 'Dedicated Support',
-      description: 'Always here when you need us'
-    }
+      description: 'Always here when you need us',
+    },
   ];
 
   return (
     <section ref={ref} className="py-20 bg-gradient-primary relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0">
-        {/* Floating particles */}
         {Array.from({ length: 15 }, (_, i) => (
           <motion.div
             key={i}
@@ -69,9 +68,7 @@ export const StatsSection = () => {
           animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="heading-lg text-white mb-4">
-            The Results Speak for Themselves
-          </h2>
+          <h2 className="heading-lg text-white mb-4">The Results Speak for Themselves</h2>
           <p className="body-lg text-white/80 max-w-3xl mx-auto">
             Real numbers from real client success stories
           </p>
@@ -80,12 +77,7 @@ export const StatsSection = () => {
         {/* Stats Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
-            <StatCard 
-              key={stat.label} 
-              stat={stat} 
-              index={index} 
-              inView={inView} 
-            />
+            <StatCard key={stat.label} stat={stat} index={index} inView={inView} />
           ))}
         </div>
       </div>
@@ -111,22 +103,21 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, inView }) => {
   useEffect(() => {
     if (inView && !hasAnimated) {
       setHasAnimated(true);
-      let start = 0;
-      const end = stat.number;
-      const duration = 2000; // 2 seconds
-      const increment = end / (duration / 16); // 60fps
+      const startTimestamp = performance.now();
+      const duration = 2000;
 
-      const timer = setInterval(() => {
-        start += increment;
-        if (start >= end) {
-          setCount(end);
-          clearInterval(timer);
+      const step = (currentTime: number) => {
+        const progress = Math.min((currentTime - startTimestamp) / duration, 1);
+        setCount(Math.floor(progress * stat.number));
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
         } else {
-          setCount(Math.floor(start));
+          setCount(stat.number);
         }
-      }, 16);
+      };
 
-      return () => clearInterval(timer);
+      requestAnimationFrame(step);
     }
   }, [inView, stat.number, hasAnimated]);
 
@@ -144,16 +135,15 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, inView }) => {
         {/* Animated Progress Circle */}
         <div className="relative w-24 h-24 mx-auto mb-6">
           <svg className="w-24 h-24 transform -rotate-90" viewBox="0 0 100 100">
-            {/* Background circle */}
             <circle
               cx="50"
               cy="50"
               r="40"
-              stroke="white/20"
+              stroke="white"
+              strokeOpacity="0.2"
               strokeWidth="8"
               fill="transparent"
             />
-            {/* Progress circle */}
             <motion.circle
               cx="50"
               cy="50"
@@ -163,14 +153,11 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, inView }) => {
               fill="transparent"
               strokeLinecap="round"
               initial={{ pathLength: 0 }}
-              animate={inView ? { pathLength: 1 } : { pathLength: 0 }}
-              transition={{ duration: 2, delay: index * 0.1 }}
-              style={{
-                pathLength: count / stat.number,
-              }}
+              animate={{ pathLength: count / stat.number }}
+              transition={{ duration: 0.5 }}
             />
           </svg>
-          
+
           {/* Particle burst effect */}
           {hasAnimated && count === stat.number && (
             <div className="absolute inset-0 flex items-center justify-center">
@@ -181,8 +168,8 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, inView }) => {
                   initial={{ scale: 0, x: 0, y: 0 }}
                   animate={{
                     scale: [0, 1, 0],
-                    x: Math.cos((i * 45) * Math.PI / 180) * 30,
-                    y: Math.sin((i * 45) * Math.PI / 180) * 30,
+                    x: Math.cos((i * 45 * Math.PI) / 180) * 30,
+                    y: Math.sin((i * 45 * Math.PI) / 180) * 30,
                   }}
                   transition={{ duration: 0.6, delay: 2 + index * 0.1 }}
                 />
@@ -192,22 +179,16 @@ const StatCard: React.FC<StatCardProps> = ({ stat, index, inView }) => {
         </div>
 
         {/* Number */}
-        <motion.div
-          className="text-4xl md:text-5xl font-bold text-white mb-2"
-          key={count} // Force re-render for smooth number animation
-        >
-          {count}{stat.suffix}
+        <motion.div className="text-4xl md:text-5xl font-bold text-white mb-2">
+          {count}
+          {stat.suffix}
         </motion.div>
 
         {/* Label */}
-        <h3 className="text-lg font-semibold text-white mb-2">
-          {stat.label}
-        </h3>
+        <h3 className="text-lg font-semibold text-white mb-2">{stat.label}</h3>
 
         {/* Description */}
-        <p className="text-white/70 text-sm">
-          {stat.description}
-        </p>
+        <p className="text-white/70 text-sm">{stat.description}</p>
       </motion.div>
     </motion.div>
   );
