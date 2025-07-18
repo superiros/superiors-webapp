@@ -17,7 +17,7 @@ const Footer = () => {
                 <img src="/images/logo.png" alt="" />
               </div>
               <div className="text-lg font-semibold text-gray-900">
-                Superiors Inadia
+                Superiors India
               </div>
             </div>
             <div className="text-gray-600">

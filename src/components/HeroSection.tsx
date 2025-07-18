@@ -28,13 +28,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick, onWork
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-8 leading-tight">
             We transform{' '}
             <span className="text-[#393939] underline">businesses</span>{' '}
-            into <br />leaders with websites and{' '} <br />
+            into <br />leaders with digital platforms and{' '} <br />
             high-converting{' '}
             <span className="text-[#393939] underline">
               content
             </span>{' '}
           </h1>
-          
+          {/* We transform businesses into leaders with digital platforms and high-converting content. */}
           {/* Subheadline */}
           <motion.p
             className="text-lg md:text-sm text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed"
@@ -42,8 +42,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onContactClick, onWork
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Leverage your expertise into high-converting video content that builds trust, generates <br /> 
-            qualified leads organically, and establishes you as the go-to authority in your space.
+            Your expertise deserves recognition. Your business deserves growth. Your brand 
+            deserves to dominate.
           </motion.p>
 
           {/* CTA Button with Arrow */}

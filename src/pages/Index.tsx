@@ -193,7 +193,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = ({ type, onClose }) => {
 const AboutModal = () => (
   <div className="p-8 md:p-12">
     <div className="text-center mb-8">
-      <h2 className="heading-lg text-dark-gray mb-4">About DigitalCraft</h2>
+      <h2 className="heading-lg text-dark-gray mb-4">About Superiors</h2>
       <p className="body-lg text-medium-gray max-w-3xl mx-auto">
         We're a passionate team of digital experts dedicated to transforming businesses through innovative solutions.
       </p>
@@ -203,7 +203,7 @@ const AboutModal = () => (
     <div className="mb-12">
       <h3 className="text-2xl font-semibold text-dark-gray mb-4">Our Story</h3>
       <p className="text-medium-gray leading-relaxed mb-6">
-        Founded in 2020, DigitalCraft emerged from a simple belief: every business deserves a powerful digital presence. 
+        Founded in 2019, Superiors emerged from a simple belief: every business deserves a powerful digital presence. 
         We started as a small team of designers and developers who were frustrated by the gap between beautiful design and 
         effective business results.
       </p>
@@ -228,7 +228,7 @@ const AboutModal = () => (
     </div>
 
     {/* Team */}
-    <div>
+    {/* <div>
       <h3 className="text-2xl font-semibold text-dark-gray mb-6 text-center">Meet Our Team</h3>
       <div className="grid md:grid-cols-3 gap-6">
         {[
@@ -247,7 +247,7 @@ const AboutModal = () => (
           </div>
         ))}
       </div>
-    </div>
+    </div> */}
   </div>
 );
 
@@ -289,8 +289,8 @@ const ServicesModal = () => (
               <div>
                 <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
                 <div className="text-medium-gray space-y-1">
-                  <div>Starter: $1,500/month</div>
-                  <div>Growth: $2,500/month</div>
+                  <div>Starter: ₹30,000/month</div>
+                  <div>Growth: ₹40,000/month</div>
                   <div>Enterprise: Custom pricing</div>
                 </div>
               </div>
@@ -310,7 +310,7 @@ const ServicesModal = () => (
           <div className="flex-1">
             <h3 className="text-2xl font-semibold text-dark-gray mb-4">Website Development</h3>
             <p className="text-medium-gray mb-6">
-              Create stunning, high-performance websites that convert visitors into customers and establish your digital authority.
+              Create stunning, high-performance websites/apps that convert visitors into customers and establish your digital authority.
             </p>
             <div className="grid md:grid-cols-2 gap-4">
               <div>
@@ -325,9 +325,9 @@ const ServicesModal = () => (
               <div>
                 <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
                 <div className="text-medium-gray space-y-1">
-                  <div>Landing Page: $2,500</div>
-                  <div>Business Site: $5,000</div>
-                  <div>E-commerce: $8,500+</div>
+                  <div>Landing Page: ₹25,000</div>
+                  <div>Business Site: ₹50,000</div>
+                  <div>E-commerce: ₹70,000+</div>
                 </div>
               </div>
             </div>
