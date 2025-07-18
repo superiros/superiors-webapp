@@ -36,12 +36,12 @@ const Footer = () => {
             <h3 className="font-semibold text-gray-900 mb-4">Process</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/process" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="#process" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Process
                 </a>
               </li>
               <li>
-                <a href="/testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Testimonials
                 </a>
               </li>
@@ -53,12 +53,12 @@ const Footer = () => {
             <h3 className="font-semibold text-gray-900 mb-4">Services</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/services" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="#services" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Services
                 </a>
               </li>
               <li>
-                <a href="/faq" className="text-gray-600 hover:text-gray-900 transition-colors">
+                <a href="#faq" className="text-gray-600 hover:text-gray-900 transition-colors">
                   Popular FAQs
                 </a>
               </li>
