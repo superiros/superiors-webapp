@@ -343,7 +343,7 @@ const ServicesModal = () => (
         {[
           { title: "TechStart Solutions", category: "Website Development", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop" },
           { title: "Fashion Forward", category: "Social Media", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" },
-          { title: "EcoGreen Solutions", category: "Full Package", image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176?w=300&h=200&fit=crop" }
+          { title: "Get Fashonable", category: "Full Package", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" }
         ].map((project) => (
           <div key={project.title} className="group cursor-pointer">
             <div className="bg-gray-200 rounded-2xl overflow-hidden mb-3 aspect-video">
