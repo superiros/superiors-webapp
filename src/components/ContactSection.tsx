@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, CheckCircle } from 'lucide-react';
 import { useForm } from 'react-hook-form';
+import emailjs from '@emailjs/browser'; // Import EmailJS
 
 interface ContactFormData {
   name: string;
@@ -10,6 +11,7 @@ interface ContactFormData {
   company: string;
   service: string;
   message: string;
+  [key: string]: string; // Add this line
 }
 
 export const ContactSection = () => {
@@ -21,26 +23,36 @@ export const ContactSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const { 
-    register, 
-    handleSubmit, 
+  const {
+    register,
+    handleSubmit,
     formState: { errors },
     reset
   } = useForm<ContactFormData>();
 
   const onSubmit = async (data: ContactFormData) => {
     setIsLoading(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    console.log('Form submitted:', data);
-    setIsLoading(false);
-    setIsSubmitted(true);
-    reset();
-    
-    // Reset success state after 5 seconds
-    setTimeout(() => setIsSubmitted(false), 5000);
+
+    // EmailJS service ID, template ID, and public key
+    const serviceID = 'service_d6hjabp'; // Get this from your EmailJS dashboard
+    const templateID = 'template_4x5fan1'; // Get this from your EmailJS dashboard
+    const publicKey = 'KHpOG4AyoQ3oIZ8ex'; // Get this from your EmailJS dashboard (Account -> API Keys)
+
+    try {
+      // The 'data' object is passed directly as templateParams
+      await emailjs.send(serviceID, templateID, data, { publicKey });
+
+      console.log('Form submitted successfully:', data);
+      setIsSubmitted(true);
+      reset();
+    } catch (error) {
+      console.error('Email sending failed:', error);
+      alert('Failed to send message. Please try again later.'); // User-friendly error
+    } finally {
+      setIsLoading(false);
+      // Reset success state after 5 seconds
+      setTimeout(() => setIsSubmitted(false), 5000);
+    }
   };
 
   const contactInfo = [
@@ -111,8 +123,8 @@ export const ContactSection = () => {
                       {...register('name', { required: 'Name is required' })}
                       type="text"
                       className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-0 ${
-                        errors.name 
-                          ? 'border-red-300 focus:border-red-500' 
+                        errors.name
+                          ? 'border-red-300 focus:border-red-500'
                           : 'border-gray-200 focus:border-electric-blue focus:shadow-lg focus:shadow-electric-blue/20'
                       }`}
                       placeholder="Your full name"
@@ -133,7 +145,7 @@ export const ContactSection = () => {
                     Email Address *
                   </label>
                   <input
-                    {...register('email', { 
+                    {...register('email', {
                       required: 'Email is required',
                       pattern: {
                         value: /^\S+@\S+$/i,
@@ -142,8 +154,8 @@ export const ContactSection = () => {
                     })}
                     type="email"
                     className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-0 ${
-                      errors.email 
-                        ? 'border-red-300 focus:border-red-500' 
+                      errors.email
+                        ? 'border-red-300 focus:border-red-500'
                         : 'border-gray-200 focus:border-electric-blue focus:shadow-lg focus:shadow-electric-blue/20'
                     }`}
                     placeholder="your.email@company.com"
@@ -182,15 +194,17 @@ export const ContactSection = () => {
                   <select
                     {...register('service', { required: 'Please select a service' })}
                     className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-0 ${
-                      errors.service 
-                        ? 'border-red-300 focus:border-red-500' 
+                      errors.service
+                        ? 'border-red-300 focus:border-red-500'
                         : 'border-gray-200 focus:border-electric-blue focus:shadow-lg focus:shadow-electric-blue/20'
                     }`}
                   >
                     <option value="">Select a service</option>
                     <option value="social-media">Social Media Management</option>
+                    <option value="content-management">Content Management</option>
                     <option value="website">Website Development</option>
-                    <option value="both">Both Services</option>
+                    <option value="app">App Development</option>
+                    <option value="ai">AI Software</option>
                     <option value="consultation">Free Consultation</option>
                   </select>
                   {errors.service && (
@@ -211,8 +225,8 @@ export const ContactSection = () => {
                     {...register('message', { required: 'Message is required' })}
                     rows={4}
                     className={`w-full px-4 py-3 border-2 rounded-xl transition-all duration-300 focus:outline-none focus:ring-0 resize-none ${
-                      errors.message 
-                        ? 'border-red-300 focus:border-red-500' 
+                      errors.message
+                        ? 'border-red-300 focus:border-red-500'
                         : 'border-gray-200 focus:border-electric-blue focus:shadow-lg focus:shadow-electric-blue/20'
                     }`}
                     placeholder="Tell us about your project and goals..."
