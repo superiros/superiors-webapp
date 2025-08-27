@@ -61,6 +61,7 @@ export const ContactSection = () => {
       label: 'Email',
       value: 'contact@superiors.in',
       href: 'contact@superiors.in'
+      
     },
     {
       icon: Phone,
