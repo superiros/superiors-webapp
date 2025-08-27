@@ -7,6 +7,7 @@ import { ProcessSection } from '@/components/ProcessSection';
 import { StatsSection } from '@/components/StatsSection';
 import { TestimonialsSection } from '@/components/TestimonialsSection';
 import { ContactSection } from '@/components/ContactSection';
+import PopularFaqs from '@/components/PopularFaqs';
 import VideoCarousel from '@/components/VideoGallery';
 // import { Footer } from 'react-day-picker';
 import Footer from '@/components/Footer';
@@ -21,6 +22,7 @@ const Index = () => {
   const statsRef = useRef<HTMLDivElement>(null);
   const testimonialsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
+  const popularfaqsRef = useRef<HTMLDivElement>(null);
 
   // Smooth scroll to section function
   const scrollToSection = (sectionName: string) => {
@@ -31,6 +33,7 @@ const Index = () => {
       'testimonials': testimonialsRef,
       'contact': contactRef,
       'video': videoRef,
+      'popularfaqs': popularfaqsRef
     };
 
     if (sectionName === 'about' || sectionName === 'services') {
@@ -116,6 +119,11 @@ const Index = () => {
         {/* Testimonials Section */}
         <div ref={testimonialsRef}>
           <TestimonialsSection />
+        </div>
+
+        {/* Contact Section */}
+        <div ref={popularfaqsRef}>
+          <PopularFaqs />
         </div>
 
         {/* Contact Section */}
