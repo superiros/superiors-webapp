@@ -61,7 +61,7 @@ export const ContactSection = () => {
       label: 'Email',
       value: 'contact@superiors.in',
       href: 'contact@superiors.in'
-      
+
     },
     {
       icon: Phone,
@@ -331,7 +331,7 @@ export const ContactSection = () => {
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.9 }}
             >
-              <h4 className="text-xl font-semibold mb-3">Why Choose DigitalCraft?</h4>
+              <h4 className="text-xl font-semibold mb-3">Why Choose Superiors?</h4>
               <ul className="space-y-2 text-white/90">
                 <li className="flex items-center">
                   <CheckCircle size={16} className="mr-3 flex-shrink-0" />
