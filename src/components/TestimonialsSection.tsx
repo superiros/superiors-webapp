@@ -17,7 +17,7 @@ export const TestimonialsSection = () => {
       role: "CEO",
       service: "Website Development",
       rating: 5,
-      quote: "DigitalCraft transformed our online presence completely. Our new website not only looks stunning but has increased our conversion rate by 300%. The team's attention to detail and commitment to excellence is unmatched.",
+      quote: "Superiors transformed our online presence completely. Our new website not only looks stunning but has increased our conversion rate by 300%. The team's attention to detail and commitment to excellence is unmatched.",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
     },
     {
@@ -27,7 +27,7 @@ export const TestimonialsSection = () => {
       role: "Marketing Director",
       service: "Social Media Management",
       rating: 5,
-      quote: "In just 6 months, our social media following grew by 500% and our engagement rates skyrocketed. The strategic approach and creative content that DigitalCraft provides is simply outstanding.",
+      quote: "In just 6 months, our social media following grew by 500% and our engagement rates skyrocketed. The strategic approach and creative content that Superiors provides is simply outstanding.",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
     },
     {
@@ -37,7 +37,7 @@ export const TestimonialsSection = () => {
       role: "Founder",
       service: "Full Digital Package",
       rating: 5,
-      quote: "Working with DigitalCraft was a game-changer for our brand. They didn't just build us a website and manage our socials - they became true partners in our growth journey. Absolutely recommend!",
+      quote: "Working with Superiors was a game-changer for our brand. They didn't just build us a website and manage our socials - they became true partners in our growth journey. Absolutely recommend!",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
     },
     {
@@ -47,7 +47,7 @@ export const TestimonialsSection = () => {
       role: "Co-Founder", 
       service: "Website Development",
       rating: 5,
-      quote: "The professionalism and expertise of the DigitalCraft team exceeded all our expectations. Our new website perfectly captures our brand vision and has significantly boosted our online credibility.",
+      quote: "The professionalism and expertise of the Superiors team exceeded all our expectations. Our new website perfectly captures our brand vision and has significantly boosted our online credibility.",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
     }
   ];
