@@ -71,7 +71,7 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a 
                 target='__blank'
-                href="https://www.instagram.com/superiors.in/" 
+                href="https://www.instagram.com/superiors.ind/" 
                 className="p-2 bg-yellow-100 rounded-lg hover:bg-yellow-200 transition-colors"
                 aria-label="Instagram"
               >
