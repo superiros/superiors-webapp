@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
+import { useInView } from 'react-intersection-observer';
 
 const faqs = [
   {
@@ -26,6 +27,10 @@ const faqs = [
 
 export default function PopularFaqs() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const { ref, inView } = useInView({
+    threshold: 0.1,
+    triggerOnce: true
+  });
 
   const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
