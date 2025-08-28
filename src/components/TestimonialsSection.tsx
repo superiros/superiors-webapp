@@ -12,12 +12,12 @@ export const TestimonialsSection = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Sarah Johnson",
-      company: "TechStart Solutions",
+      name: "Pankaj Wadulkar",
+      company: "Pariniti Finserve",
       role: "CEO",
-      service: "Website Development",
+      service: "Content Creation",
       rating: 5,
-      quote: "Superiors transformed our online presence completely. Our new website not only looks stunning but has increased our conversion rate by 300%. The team's attention to detail and commitment to excellence is unmatched.",
+      quote: "In just 6 months, our social media following grew by 500% and our engagement rates skyrocketed. The strategic approach and creative content that Superiors provides is simply outstanding.",
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
     },
     {
