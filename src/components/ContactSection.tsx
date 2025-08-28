@@ -66,8 +66,8 @@ export const ContactSection = () => {
     {
       icon: Phone,
       label: 'Phone',
-      value: '+91 84079-94909',
-      href: 'tel:+918407994909'
+      value: '+91 9822421047',
+      href: 'tel:+919822421047'
     },
     {
       icon: MapPin,
