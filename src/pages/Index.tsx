@@ -13,10 +13,11 @@ import VideoCarousel from '@/components/VideoGallery';
 import Footer from '@/components/Footer';
 const Index = () => {
   const [activeModal, setActiveModal] = useState<string | null>(null);
-  
+
   // Refs for scroll-to functionality
   const heroRef = useRef<HTMLDivElement>(null);
   const servicesRef = useRef<HTMLDivElement>(null);
+  const portfolioRef = useRef<HTMLDivElement>(null);
   const processRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
@@ -31,19 +32,20 @@ const Index = () => {
       'about': heroRef, // Will open modal instead
       'services': servicesRef, // Will open modal instead
       'testimonials': testimonialsRef,
+      'portfolio': portfolioRef,
       'contact': contactRef,
       'video': videoRef,
       'popularfaqs': popularfaqsRef
     };
 
-    if (sectionName === 'about' || sectionName === 'services') {
+    if (sectionName === 'about' || sectionName === 'services' || sectionName === 'portfolio') {
       setActiveModal(sectionName);
       return;
     }
 
     const targetRef = refs[sectionName as keyof typeof refs];
     if (targetRef?.current) {
-      targetRef.current.scrollIntoView({ 
+      targetRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -58,6 +60,10 @@ const Index = () => {
   const handleWorkClick = () => {
     setActiveModal('services');
   };
+
+  // const handleWorkClick = () => {
+  //   setActiveModal('portfolio');
+  // };
 
   // Close modal on escape key
   useEffect(() => {
@@ -89,7 +95,7 @@ const Index = () => {
       <main>
         {/* Hero Section */}
         <div ref={heroRef}>
-          <HeroSection 
+          <HeroSection
             onContactClick={handleContactClick}
             onWorkClick={handleWorkClick}
           />
@@ -99,7 +105,7 @@ const Index = () => {
         <div ref={servicesRef}>
           <ServicesSection />
         </div>
-        
+
 
         {/* Video Work */}
         <div ref={videoRef}>
@@ -131,15 +137,15 @@ const Index = () => {
           <ContactSection />
         </div>
 
-        
+
       </main>
       <Footer />
       {/* Modals */}
       <AnimatePresence>
         {activeModal && (
-          <ModalOverlay 
-            type={activeModal} 
-            onClose={() => setActiveModal(null)} 
+          <ModalOverlay
+            type={activeModal}
+            onClose={() => setActiveModal(null)}
           />
         )}
       </AnimatePresence>
@@ -192,6 +198,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = ({ type, onClose }) => {
         {/* Modal Content Based on Type */}
         {type === 'about' && <AboutModal />}
         {type === 'services' && <ServicesModal />}
+        {type === 'portfolio' && <PortfolioModal />}
       </motion.div>
     </motion.div>
   );
@@ -211,12 +218,12 @@ const AboutModal = () => (
     <div className="mb-12">
       <h3 className="text-2xl font-semibold text-dark-gray mb-4">Our Story</h3>
       <p className="text-medium-gray leading-relaxed mb-6">
-        Founded in 2019, Superiors emerged from a simple belief: every business deserves a powerful digital presence. 
-        We started as a small team of designers and developers who were frustrated by the gap between beautiful design and 
+        Founded in 2019, Superiors emerged from a simple belief: every business deserves a powerful digital presence.
+        We started as a small team of designers and developers who were frustrated by the gap between beautiful design and
         effective business results.
       </p>
       <p className="text-medium-gray leading-relaxed">
-        Today, we've helped over 150 businesses transform their digital presence, generating millions in additional revenue 
+        Today, we've helped over 150 businesses transform their digital presence, generating millions in additional revenue
         for our clients through strategic design and development.
       </p>
     </div>
@@ -259,6 +266,56 @@ const AboutModal = () => (
   </div>
 );
 
+
+
+
+const PortfolioModal = () => (
+<div
+  style={{
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
+    height: "auto",
+    backgroundColor: "#f5f5f5",
+    overflow: "hidden",
+    boxSizing: "border-box"
+  }}
+>
+  <div
+    style={{
+      position: "relative",
+      width: "100vw",
+      maxWidth: "1200px", // like a laptop screen width
+      aspectRatio: "16 / 9",
+      boxShadow: "0 4px 20px rgba(0,0,0,0.2)",
+      borderRadius: "16px",
+      overflow: "hidden"
+    }}
+  >
+    <iframe
+      loading="lazy"
+      src="https://www.canva.com/design/DAG0YVp9_dI/Vqt5uoOo1yq2dzf69qH8Ng/view?embed"
+      allowFullScreen
+      allow="fullscreen"
+      style={{
+        position: "absolute",
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        border: "none"
+      }}
+    ></iframe>
+  </div>
+</div>
+
+);
+
+
+
+
+
 // Services Modal Content
 const ServicesModal = () => (
   <div className="p-8 md:p-12">
@@ -276,7 +333,7 @@ const ServicesModal = () => (
         <div className="flex items-start gap-6">
           <div className="w-16 h-16 bg-gradient-to-r from-sunset-orange to-coral-pink rounded-2xl flex items-center justify-center flex-shrink-0">
             <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
             </svg>
           </div>
           <div className="flex-1">
@@ -355,8 +412,8 @@ const ServicesModal = () => (
         ].map((project) => (
           <div key={project.title} className="group cursor-pointer">
             <div className="bg-gray-200 rounded-2xl overflow-hidden mb-3 aspect-video">
-              <img 
-                src={project.image} 
+              <img
+                src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
