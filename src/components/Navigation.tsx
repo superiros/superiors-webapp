@@ -57,7 +57,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {['About', 'Services', 'Testimonials'].map((item) => (
+              {['About', 'Services', 'Testimonials', 'Portfolio'].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => handleNavClick(item.toLowerCase())}
