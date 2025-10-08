@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import type { Metadata } from 'next';
-import Portfolio from "./components/Portfolio";
+import Portfolio from "./pages/Portfolio";
 const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
