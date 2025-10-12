@@ -38,54 +38,63 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-8 lg:px-8">
+        <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <motion.div
-            className="flex-shrink-0 cursor-pointer"
+            className="flex-shrink-0 cursor-pointer flex items-center gap-2"
             onClick={scrollToTop}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <div className={`text-2xl font-bold ${
-              isScrolled ? 'text-gradient-primary' : 'text-white'
+            {/* <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center overflow-hidden">
+              <img 
+                src="/logo.png" 
+                alt="Logo" 
+                className="w-full h-full object-contain"
+              />
+            </div> */}
+            <span className={`text-xl font-bold ${
+              isScrolled ? 'text-black' : 'text-black'
             }`}>
               Superiors
-            </div>
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {['About', 'Services', 'Testimonials'].map((item) => (
+            <div className="flex items-center gap-8">
+              {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => handleNavClick(item.toLowerCase())}
-                  className={`relative px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  className={`text-sm font-medium transition-colors duration-200 ${
                     isScrolled
-                      ? 'text-dark-gray hover:text-electric-blue'
-                      : 'text-white hover:text-electric-blue'
+                      ? 'text-gray-900 hover:text-gray-600'
+                      : 'text-black hover:text-gray-300'
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   {item}
-                  <motion.div
-                    className="absolute bottom-0 left-0 w-full h-0.5 bg-electric-blue"
-                    initial={{ scaleX: 0 }}
-                    whileHover={{ scaleX: 1 }}
-                    transition={{ duration: 0.3 }}
-                  />
                 </motion.button>
               ))}
             </div>
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
+          {/* CTA Buttons */}
+          <div className="hidden md:flex items-center gap-4">
+            {/* <motion.button
+              onClick={() => handleNavClick('login')}
+              className="bg-white text-black px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition border border-gray-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Log in
+            </motion.button> */}
             <motion.button
-              onClick={() => handleNavClick('contact')}
-              className="btn-primary"
+              onClick={() => handleNavClick('signup')}
+              className="bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -98,7 +107,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
             <motion.button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 rounded-md ${
-                isScrolled ? 'text-dark-gray' : 'text-white'
+                isScrolled ? 'text-gray-900' : 'text-black'
               }`}
               whileTap={{ scale: 0.95 }}
             >
@@ -125,17 +134,33 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="px-6 py-4 space-y-4">
+            <div className="px-8 py-4 space-y-4">
               {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => handleNavClick(item.toLowerCase())}
-                  className="block w-full text-left px-3 py-2 text-dark-gray hover:text-electric-blue font-medium"
+                  className="block w-full text-left px-3 py-2 text-gray-900 hover:text-gray-600 font-medium"
                   whileTap={{ scale: 0.95 }}
                 >
                   {item}
                 </motion.button>
               ))}
+              <div className="pt-4 border-t border-gray-200 space-y-3">
+                {/* <motion.button
+                  onClick={() => handleNavClick('login')}
+                  className="block w-full text-left px-3 py-2 text-black hover:text-gray-600 font-medium"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Log in
+                </motion.button> */}
+                <motion.button
+                  onClick={() => handleNavClick('signup')}
+                  className="block w-full bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition text-center"
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact
+                </motion.button>
+              </div>
             </div>
           </motion.div>
         )}

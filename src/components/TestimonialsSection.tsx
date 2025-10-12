@@ -1,271 +1,199 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+
+const testimonials = [
+  {
+    id: 1,
+    text: "Completely changed the way I work. I felt a speed that I had never experienced before in projects.",
+    name: "Brooklyn Simmons",
+    role: "Product Manager",
+    avatar: "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    id: 2,
+    text: "The platform's intuitive design and powerful features have transformed our workflow. It's a game-changer for our team.",
+    name: "Sarah Johnson",
+    role: "Creative Director",
+    avatar: "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    id: 3,
+    text: "Outstanding experience from start to finish. The results exceeded our expectations and the ROI has been incredible.",
+    name: "Michael Chen",
+    role: "Marketing Lead",
+    avatar: "https://i.pravatar.cc/150?img=12"
+  },
+  {
+    id: 4,
+    text: "Best decision we made this year. The support team is responsive and the platform is incredibly reliable.",
+    name: "Emily Rodriguez",
+    role: "Brand Strategist",
+    avatar: "https://i.pravatar.cc/150?img=9"
+  }
+];
 
 export const TestimonialsSection = () => {
-  const { ref, inView } = useInView({
-    threshold: 0.1,
-    triggerOnce: true
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 1000 : -1000,
+      opacity: 0
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 1000 : -1000,
+      opacity: 0
+    })
+  };
+
+  const paginate = (newDirection: number) => {
+    setDirection(newDirection);
+    setCurrentIndex((prevIndex) => {
+      const newIndex = prevIndex + newDirection;
+      if (newIndex < 0) return testimonials.length - 1;
+      if (newIndex >= testimonials.length) return 0;
+      return newIndex;
+    });
+  };
+
+  // Auto-scroll effect
+  useState(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 5000); // Change testimonial every 5 seconds
+
+    return () => clearInterval(interval);
   });
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Pankaj Wadulkar",
-      company: "Pariniti Finserve",
-      role: "CEO",
-      service: "Content Creation",
-      rating: 5,
-      quote: "In just 6 months, our social media following grew by 500% and our engagement rates skyrocketed. The strategic approach and creative content that Superiors provides is simply outstanding.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      id: 2,
-      name: "Michael Chen", 
-      company: "GrowthVentures",
-      role: "Marketing Director",
-      service: "Social Media Management",
-      rating: 5,
-      quote: "In just 6 months, our social media following grew by 500% and our engagement rates skyrocketed. The strategic approach and creative content that Superiors provides is simply outstanding.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      id: 3,
-      name: "Emily Rodriguez",
-      company: "Fashion Forward",
-      role: "Founder",
-      service: "Full Digital Package",
-      rating: 5,
-      quote: "Working with Superiors was a game-changer for our brand. They didn't just build us a website and manage our socials - they became true partners in our growth journey. Absolutely recommend!",
-      avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
-    },
-    {
-      id: 4,
-      name: "David Thompson",
-      company: "EcoGreen Solutions",
-      role: "Co-Founder", 
-      service: "Website Development",
-      rating: 5,
-      quote: "The professionalism and expertise of the Superiors team exceeded all our expectations. Our new website perfectly captures our brand vision and has significantly boosted our online credibility.",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
-    }
-  ];
-
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-
-  // Auto-rotate testimonials
-  useEffect(() => {
-    if (!isPlaying) return;
-    
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => 
-        prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 8000);
-
-    return () => clearInterval(timer);
-  }, [isPlaying, testimonials.length]);
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-  };
-
-  const goToPrevious = () => {
-    setCurrentIndex(currentIndex === 0 ? testimonials.length - 1 : currentIndex - 1);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex(currentIndex === testimonials.length - 1 ? 0 : currentIndex + 1);
+  const handleManualNavigation = (dir: number) => {
+    setIsAutoPlaying(false);
+    paginate(dir);
+    // Resume auto-play after 10 seconds of inactivity
+    setTimeout(() => setIsAutoPlaying(true), 10000);
   };
 
   return (
-    <section 
-      ref={ref} 
-      className="py-20 bg-light-gray relative overflow-hidden"
-      onMouseEnter={() => setIsPlaying(false)}
-      onMouseLeave={() => setIsPlaying(true)}
-    >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0 bg-gradient-to-r from-electric-blue to-vibrant-purple" 
-             style={{ clipPath: 'polygon(0 0, 100% 0, 100% 70%, 0 100%)' }} />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="heading-lg text-dark-gray mb-4">
-            What Our Clients Say
-          </h2>
-          <p className="body-lg text-medium-gray max-w-3xl mx-auto">
-            Don't just take our word for it - hear from the businesses we've helped transform
-          </p>
-        </motion.div>
-
-        {/* Testimonial Slider */}
-        <div className="relative max-w-4xl mx-auto">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentIndex}
-              initial={{ opacity: 0, x: 300 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -300 }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="bg-white rounded-3xl p-8 md:p-12 shadow-xl"
+    <section className="py-24 px-8 bg-gray-50">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left Content */}
+          <div className="space-y-6">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight"
             >
-              <div className="flex flex-col lg:flex-row items-center gap-8">
-                {/* Client Photo */}
-                <motion.div
-                  className="flex-shrink-0"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <div className="relative">
-                    <div className="w-24 h-24 rounded-full bg-gradient-to-r from-electric-blue to-vibrant-purple p-1">
-                      <img
-                        src={testimonials[currentIndex].avatar}
-                        alt={testimonials[currentIndex].name}
-                        className="w-full h-full rounded-full object-cover"
-                      />
-                    </div>
-                    <motion.div
-                      className="absolute -bottom-2 -right-2 w-8 h-8 bg-mint-green rounded-full flex items-center justify-center"
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.4, type: "spring" }}
+              Know What<br />
+              Our Clients Say
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-gray-600 text-lg max-w-md"
+            >
+              We are happy because we have happy customers, because customer satisfaction is a matter of pride for us, thank you all customers.
+            </motion.p>
+          </div>
+
+          {/* Right Testimonial Card */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-cyan-300 to-blue-400 rounded-3xl p-12 shadow-xl">
+              <div className="space-y-8">
+                <div className="overflow-hidden">
+                  <AnimatePresence initial={false} custom={direction}>
+                    <motion.p
+                      key={currentIndex}
+                      custom={direction}
+                      variants={slideVariants}
+                      initial="enter"
+                      animate="center"
+                      exit="exit"
+                      transition={{
+                        x: { type: "spring", stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                      }}
+                      className="text-white text-xl lg:text-2xl leading-relaxed"
                     >
-                      <Star className="w-4 h-4 text-white fill-current" />
-                    </motion.div>
+                      {testimonials[currentIndex].text}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <div className="overflow-hidden flex-1">
+                    <AnimatePresence initial={false} custom={direction}>
+                      <motion.div
+                        key={currentIndex}
+                        custom={direction}
+                        variants={slideVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{
+                          x: { type: "spring", stiffness: 300, damping: 30 },
+                          opacity: { duration: 0.2 }
+                        }}
+                        className="flex items-center gap-4"
+                      >
+                        <img
+                          src={testimonials[currentIndex].avatar}
+                          alt={testimonials[currentIndex].name}
+                          className="w-14 h-14 rounded-full border-2 border-white shadow-md"
+                        />
+                        <div>
+                          <h4 className="text-white font-semibold text-lg">
+                            {testimonials[currentIndex].name}
+                          </h4>
+                          <p className="text-blue-100 text-sm">
+                            {testimonials[currentIndex].role}
+                          </p>
+                        </div>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
-                </motion.div>
 
-                {/* Content */}
-                <div className="flex-1 text-center lg:text-left">
-                  {/* Quote */}
-                  <motion.div
-                    className="mb-6"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.3 }}
-                  >
-                    <div className="text-6xl text-electric-blue/20 font-serif leading-none mb-4">"</div>
-                    <TypewriterText 
-                      text={testimonials[currentIndex].quote}
-                      className="text-lg text-dark-gray leading-relaxed"
-                    />
-                  </motion.div>
-
-                  {/* Client Info */}
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                  >
-                    <h4 className="text-xl font-semibold text-dark-gray">
-                      {testimonials[currentIndex].name}
-                    </h4>
-                    <p className="text-medium-gray mb-2">
-                      {testimonials[currentIndex].role} at {testimonials[currentIndex].company}
-                    </p>
-                    
-                    {/* Star Rating */}
-                    <div className="flex justify-center lg:justify-start gap-1 mb-3">
-                      {Array.from({ length: testimonials[currentIndex].rating }, (_, i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ scale: 0, rotate: -180 }}
-                          animate={{ scale: 1, rotate: 0 }}
-                          transition={{ delay: 0.6 + (i * 0.1), type: "spring" }}
-                        >
-                          <Star className="w-5 h-5 text-sunset-orange fill-current" />
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Service Badge */}
-                    <span className="inline-block bg-electric-blue/10 text-electric-blue px-3 py-1 rounded-full text-sm font-medium">
-                      {testimonials[currentIndex].service}
-                    </span>
-                  </motion.div>
+                  {/* Navigation Buttons */}
+                  <div className="flex gap-2 ml-4">
+                    <motion.button
+                      onClick={() => paginate(-1)}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    >
+                      <ChevronLeft className="w-5 h-5 text-gray-700" />
+                    </motion.button>
+                    <motion.button
+                      onClick={() => paginate(1)}
+                      whileHover={{ scale: 1.1 }}
+                      whileTap={{ scale: 0.9 }}
+                      className="w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors"
+                    >
+                      <ChevronRight className="w-5 h-5 text-gray-700" />
+                    </motion.button>
+                  </div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
 
-          {/* Navigation Arrows */}
-          <button
-            onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-dark-gray hover:text-electric-blue transition-colors duration-200 hover:shadow-xl"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          
-          <button
-            onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center text-dark-gray hover:text-electric-blue transition-colors duration-200 hover:shadow-xl"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-
-        {/* Dot Indicators */}
-        <div className="flex justify-center mt-8 space-x-3">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'bg-electric-blue w-8' 
-                  : 'bg-medium-gray/30 hover:bg-medium-gray/50'
-              }`}
-            />
-          ))}
+                        
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-interface TypewriterTextProps {
-  text: string;
-  className?: string;
 }
-
-const TypewriterText: React.FC<TypewriterTextProps> = ({ text, className = "" }) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    if (currentIndex < text.length) {
-      const timer = setTimeout(() => {
-        setDisplayText(text.slice(0, currentIndex + 1));
-        setCurrentIndex(currentIndex + 1);
-      }, 30);
-      return () => clearTimeout(timer);
-    }
-  }, [currentIndex, text]);
-
-  useEffect(() => {
-    // Reset when text changes
-    setDisplayText("");
-    setCurrentIndex(0);
-  }, [text]);
-
-  return (
-    <p className={className}>
-      {displayText}
-      {currentIndex < text.length && (
-        <span className="animate-pulse">|</span>
-      )}
-    </p>
-  );
-};

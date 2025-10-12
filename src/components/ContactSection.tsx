@@ -241,7 +241,7 @@ export const ContactSection = () => {
                 <motion.button
                   type="submit"
                   disabled={isLoading}
-                  className={`w-full btn-primary relative overflow-hidden ${
+                  className={`w-full bg-gradient-to-r from-red-400 to-orange-400 text-white px-12 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300 shadow-lg rounded-full relative overflow-hidden ${
                     isLoading ? 'opacity-80 cursor-not-allowed' : ''
                   }`}
                   whileHover={!isLoading ? { scale: 1.02 } : {}}
@@ -326,7 +326,7 @@ export const ContactSection = () => {
 
             {/* Additional Info */}
             <motion.div
-              className="bg-gradient-primary rounded-3xl p-6 text-white"
+              className="bg-gradient-to-r from-red-400 to-orange-400 text-white px-12 py-4 rounded-3xl text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300 shadow-lg p-6 text-white"
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
               transition={{ delay: 0.9 }}
