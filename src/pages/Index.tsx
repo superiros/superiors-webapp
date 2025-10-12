@@ -99,7 +99,11 @@ const Index = () => {
       <main>
         {/* Hero Section */}
         <div ref={heroRef}>
+<<<<<<< HEAD
           {/* <HeroSection
+=======
+          <HeroSection
+>>>>>>> fddaf3ce71bbfebfa3c5c3f2456455ff3c2ca78d
             onContactClick={handleContactClick}
             onWorkClick={handleWorkClick}
           /> */}
@@ -111,11 +115,14 @@ const Index = () => {
           <ServicesSection />
         </div>
 
+<<<<<<< HEAD
         {/* Projects Section */}
         <div ref={projectsRef}>
           <ProjectsSection />
         </div>
 
+=======
+>>>>>>> fddaf3ce71bbfebfa3c5c3f2456455ff3c2ca78d
 
         {/* Video Work */}
         {/* <div ref={videoRef}>
