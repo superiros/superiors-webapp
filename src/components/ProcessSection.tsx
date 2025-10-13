@@ -144,7 +144,7 @@ export const ProcessSection = () => {
             Ready to start your transformation journey?
           </p>
           <motion.button
-            className="bg-gray-800 text-white px-6 py-2 rounded-full"
+            className="bg-gradient-to-r from-red-400 to-orange-400 text-white px-6 py-2 rounded-full"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

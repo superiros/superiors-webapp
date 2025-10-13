@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 
 const services = [
   {
-    title: 'Web deb',
+    title: 'Web Dev',
     desc: 'We help you build a brand that speaks for itself, clear, consistent, and memorable. From logo design to visual identity.',
     img: '/images/branding.jpg',
   },
@@ -21,7 +21,7 @@ const services = [
     title: 'Social Media',
     desc: 'Boost your brand visibility with SEO, social media campaigns, and performance marketing strategies.',
     img: '/images/social_media.jpg',
-   },
+  },
   {
     title: 'AI Ads',
     desc: 'We create high-performance mobile apps for Android and iOS that users love and businesses trust.',
@@ -35,7 +35,7 @@ const services = [
 ];
 
 const ServicesSection = () => {
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -56,34 +56,43 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section ref={containerRef} className="py-20 px-6 md:px-16 bg-white">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-3">Services</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+    <section ref={containerRef} className="py-16 px-4 sm:px-6 md:px-16 bg-white">
+      {/* Section Header */}
+      <div className="text-center mb-10 sm:mb-12">
+        <h2 className="text-3xl sm:text-4xl font-bold mb-3">Our Services</h2>
+        <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
           Design to Development — all that you will ever need in one place.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Services Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {services.map((service, index) => (
           <div
             key={index}
-            className="service-card opacity-0 translate-y-8 transition-all duration-700 ease-out bg-gray-50 p-6 rounded-2xl shadow-md hover:shadow-lg"
+            className="service-card opacity-0 translate-y-8 transition-all duration-700 ease-out bg-gray-50 p-4 sm:p-6 rounded-2xl shadow-sm hover:shadow-md hover:scale-[1.02] transform"
           >
-            <div className="overflow-hidden rounded-xl mb-4">
+            <div className="overflow-hidden rounded-xl mb-3 sm:mb-4">
               <img
                 src={service.img}
                 alt={service.title}
-                className="w-full h-96 object-cover rounded-xl hover:scale-105 transition-transform duration-500"
+                className="w-full h-48 sm:h-64 md:h-80 object-cover rounded-xl hover:scale-105 transition-transform duration-500"
               />
             </div>
-            <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-            <p className="text-gray-600 mb-4">{service.desc}</p>
-            <Button className="rounded-full">Know more</Button>
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">
+              {service.title}
+            </h3>
+            <p className="text-gray-600 text-sm sm:text-base mb-4 leading-relaxed">
+              {service.desc}
+            </p>
+            <Button className="rounded-full text-sm sm:text-base px-4 sm:px-6 py-2">
+              Know More
+            </Button>
           </div>
         ))}
       </div>
 
+      {/* Fade-in Animation Style */}
       <style jsx>{`
         .fade-in {
           opacity: 1 !important;
