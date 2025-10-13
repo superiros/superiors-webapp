@@ -313,7 +313,7 @@ export const ContactSection = () => {
                   transition={{ delay: 0.6 + (index * 0.1) }}
                   whileHover={{ x: 5 }}
                 >
-                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 group-hover:bg-electric-blue group-hover:text-white transition-all duration-300">
+                  <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center mr-4 group-hover:bg-gradient-to-r from-red-400 to-orange-400 group-hover:text-white transition-all duration-300">
                     <info.icon size={20} />
                   </div>
                   <div>
