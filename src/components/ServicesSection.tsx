@@ -61,7 +61,7 @@ const ServicesSection = () => {
       <div className="text-center mb-10 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold mb-3">Our Services</h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-          Design to Development — all that you will ever need in one place.
+          Design to Development all that you will ever need in one place.
         </p>
       </div>
 
