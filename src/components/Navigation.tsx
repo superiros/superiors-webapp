@@ -47,13 +47,13 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            {/* <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center overflow-hidden">
+            <div className="w-10 h-10 bg-black rounded-full flex items-center justify-center overflow-hidden">
               <img 
-                src="/logo.png" 
+                src="/logo.jpg" 
                 alt="Logo" 
                 className="w-full h-full object-contain"
               />
-            </div> */}
+            </div>
             <span className={`text-xl font-bold ${
               isScrolled ? 'text-black' : 'text-black'
             }`}>
