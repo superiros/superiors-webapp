@@ -35,7 +35,7 @@ const ProjectsSection = () => {
       <div className="text-center mb-10 sm:mb-12">
         <h2 className="text-3xl sm:text-4xl font-bold mb-3">Projects</h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-sm sm:text-base">
-          Experience our latest work — from branding to digital campaigns.
+          Experience our latest work from branding to digital campaigns.
         </p>
       </div>
 

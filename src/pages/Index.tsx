@@ -42,7 +42,7 @@ const Index = () => {
       'popularfaqs': popularfaqsRef
     };
 
-    if (sectionName === 'about' || sectionName === 'services' || sectionName === 'portfolio') {
+    if (sectionName === 'about' || sectionName === 'portfolio') {
       setActiveModal(sectionName);
       return;
     }
@@ -61,13 +61,13 @@ const Index = () => {
     scrollToSection('contact');
   };
 
-  const handleWorkClick = () => {
-    setActiveModal('services');
-  };
-
   // const handleWorkClick = () => {
-  //   setActiveModal('portfolio');
+  //   setActiveModal('services');
   // };
+
+  const handleWorkClick = () => {
+    setActiveModal('portfolio');
+  };
 
   // Close modal on escape key
   useEffect(() => {
@@ -207,7 +207,7 @@ const ModalOverlay: React.FC<ModalOverlayProps> = ({ type, onClose }) => {
 
         {/* Modal Content Based on Type */}
         {type === 'about' && <AboutModal />}
-        {type === 'services' && <ServicesModal />}
+        {/* {type === 'services' && <ServicesModal />} */}
         {type === 'portfolio' && <PortfolioModal />}
       </motion.div>
     </motion.div>
@@ -327,114 +327,114 @@ const PortfolioModal = () => (
 
 
 // Services Modal Content
-const ServicesModal = () => (
-  <div className="p-8 md:p-12">
-    <div className="text-center mb-8">
-      <h2 className="heading-lg text-dark-gray mb-4">Our Services</h2>
-      <p className="body-lg text-medium-gray max-w-3xl mx-auto">
-        Comprehensive digital solutions designed to accelerate your business growth.
-      </p>
-    </div>
+// const ServicesModal = () => (
+//   <div className="p-8 md:p-12">
+//     <div className="text-center mb-8">
+//       <h2 className="heading-lg text-dark-gray mb-4">Our Services</h2>
+//       <p className="body-lg text-medium-gray max-w-3xl mx-auto">
+//         Comprehensive digital solutions designed to accelerate your business growth.
+//       </p>
+//     </div>
 
-    {/* Service Details */}
-    <div className="space-y-12">
-      {/* Social Media Management */}
-      <div className="border border-gray-200 rounded-3xl p-8">
-        <div className="flex items-start gap-6">
-          <div className="w-16 h-16 bg-gradient-to-r from-sunset-orange to-coral-pink rounded-2xl flex items-center justify-center flex-shrink-0">
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-            </svg>
-          </div>
-          <div className="flex-1">
-            <h3 className="text-2xl font-semibold text-dark-gray mb-4">Social Media Management</h3>
-            <p className="text-medium-gray mb-6">
-              Transform your social presence into a powerful customer acquisition engine with our comprehensive social media management services.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-dark-gray mb-2">What's Included:</h4>
-                <ul className="text-medium-gray space-y-1">
-                  <li>• Custom content strategy</li>
-                  <li>• Daily posting & scheduling</li>
-                  <li>• Community management</li>
-                  <li>• Paid advertising campaigns</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
-                <div className="text-medium-gray space-y-1">
-                  <div>Starter: ₹30,000/month</div>
-                  <div>Growth: ₹40,000/month</div>
-                  <div>Enterprise: Custom pricing</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+//     {/* Service Details */}
+//     <div className="space-y-12">
+//       {/* Social Media Management */}
+//       <div className="border border-gray-200 rounded-3xl p-8">
+//         <div className="flex items-start gap-6">
+//           <div className="w-16 h-16 bg-gradient-to-r from-sunset-orange to-coral-pink rounded-2xl flex items-center justify-center flex-shrink-0">
+//             <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+//               <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+//             </svg>
+//           </div>
+//           <div className="flex-1">
+//             <h3 className="text-2xl font-semibold text-dark-gray mb-4">Social Media Management</h3>
+//             <p className="text-medium-gray mb-6">
+//               Transform your social presence into a powerful customer acquisition engine with our comprehensive social media management services.
+//             </p>
+//             <div className="grid md:grid-cols-2 gap-4">
+//               <div>
+//                 <h4 className="font-semibold text-dark-gray mb-2">What's Included:</h4>
+//                 <ul className="text-medium-gray space-y-1">
+//                   <li>• Custom content strategy</li>
+//                   <li>• Daily posting & scheduling</li>
+//                   <li>• Community management</li>
+//                   <li>• Paid advertising campaigns</li>
+//                 </ul>
+//               </div>
+//               <div>
+//                 <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
+//                 <div className="text-medium-gray space-y-1">
+//                   <div>Starter: ₹30,000/month</div>
+//                   <div>Growth: ₹40,000/month</div>
+//                   <div>Enterprise: Custom pricing</div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
 
-      {/* Website Development */}
-      <div className="border border-gray-200 rounded-3xl p-8">
-        <div className="flex items-start gap-6">
-          <div className="w-16 h-16 bg-gradient-to-r from-electric-blue to-vibrant-purple rounded-2xl flex items-center justify-center flex-shrink-0">
-            <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-            </svg>
-          </div>
-          <div className="flex-1">
-            <h3 className="text-2xl font-semibold text-dark-gray mb-4">Website Development</h3>
-            <p className="text-medium-gray mb-6">
-              Create stunning, high-performance websites/apps that convert visitors into customers and establish your digital authority.
-            </p>
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <h4 className="font-semibold text-dark-gray mb-2">What's Included:</h4>
-                <ul className="text-medium-gray space-y-1">
-                  <li>• Custom design & development</li>
-                  <li>• Mobile-responsive design</li>
-                  <li>• SEO optimization</li>
-                  <li>• Performance optimization</li>
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
-                <div className="text-medium-gray space-y-1">
-                  <div>Landing Page: ₹25,000</div>
-                  <div>Business Site: ₹50,000</div>
-                  <div>E-commerce: ₹70,000+</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+//       {/* Website Development */}
+//       <div className="border border-gray-200 rounded-3xl p-8">
+//         <div className="flex items-start gap-6">
+//           <div className="w-16 h-16 bg-gradient-to-r from-electric-blue to-vibrant-purple rounded-2xl flex items-center justify-center flex-shrink-0">
+//             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+//             </svg>
+//           </div>
+//           <div className="flex-1">
+//             <h3 className="text-2xl font-semibold text-dark-gray mb-4">Website Development</h3>
+//             <p className="text-medium-gray mb-6">
+//               Create stunning, high-performance websites/apps that convert visitors into customers and establish your digital authority.
+//             </p>
+//             <div className="grid md:grid-cols-2 gap-4">
+//               <div>
+//                 <h4 className="font-semibold text-dark-gray mb-2">What's Included:</h4>
+//                 <ul className="text-medium-gray space-y-1">
+//                   <li>• Custom design & development</li>
+//                   <li>• Mobile-responsive design</li>
+//                   <li>• SEO optimization</li>
+//                   <li>• Performance optimization</li>
+//                 </ul>
+//               </div>
+//               <div>
+//                 <h4 className="font-semibold text-dark-gray mb-2">Pricing:</h4>
+//                 <div className="text-medium-gray space-y-1">
+//                   <div>Landing Page: ₹25,000</div>
+//                   <div>Business Site: ₹50,000</div>
+//                   <div>E-commerce: ₹70,000+</div>
+//                 </div>
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
 
-    {/* Portfolio Preview */}
-    <div className="mt-12">
-      <h3 className="text-2xl font-semibold text-dark-gray mb-6 text-center">Recent Work</h3>
-      <div className="grid md:grid-cols-3 gap-6">
-        {[
-          { title: "TechStart Solutions", category: "Website Development", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop" },
-          { title: "Fashion Forward", category: "Social Media", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" },
-          { title: "Get Fashonable", category: "Full Package", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" }
-        ].map((project) => (
-          <div key={project.title} className="group cursor-pointer">
-            <div className="bg-gray-200 rounded-2xl overflow-hidden mb-3 aspect-video">
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-            <h4 className="font-semibold text-dark-gray">{project.title}</h4>
-            <p className="text-medium-gray text-sm">{project.category}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </div>
-);
+//     {/* Portfolio Preview */}
+//     <div className="mt-12">
+//       <h3 className="text-2xl font-semibold text-dark-gray mb-6 text-center">Recent Work</h3>
+//       <div className="grid md:grid-cols-3 gap-6">
+//         {[
+//           { title: "TechStart Solutions", category: "Website Development", image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=300&h=200&fit=crop" },
+//           { title: "Fashion Forward", category: "Social Media", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" },
+//           { title: "Get Fashonable", category: "Full Package", image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=300&h=200&fit=crop" }
+//         ].map((project) => (
+//           <div key={project.title} className="group cursor-pointer">
+//             <div className="bg-gray-200 rounded-2xl overflow-hidden mb-3 aspect-video">
+//               <img
+//                 src={project.image}
+//                 alt={project.title}
+//                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+//               />
+//             </div>
+//             <h4 className="font-semibold text-dark-gray">{project.title}</h4>
+//             <p className="text-medium-gray text-sm">{project.category}</p>
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   </div>
+// );
 
 export default Index;

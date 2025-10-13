@@ -64,7 +64,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="flex items-center gap-8">
-              {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
+              {['About', 'Services', 'Testimonials', 'Portfolio'].map((item) => (
                 <motion.button
                   key={item}
                   onClick={() => handleNavClick(item.toLowerCase())}
@@ -93,7 +93,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
               Log in
             </motion.button> */}
             <motion.button
-              onClick={() => handleNavClick('signup')}
+              onClick={() => handleNavClick('contact')}
               className="bg-gradient-to-r from-red-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -154,7 +154,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
                   Log in
                 </motion.button> */}
                 <motion.button
-                  onClick={() => handleNavClick('signup')}
+                  onClick={() => handleNavClick('contact')}
                   className="block w-full bg-gradient-to-r from-red-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition text-center"
                   whileTap={{ scale: 0.95 }}
                 >

@@ -91,7 +91,7 @@ export const TestimonialsSection = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-gray-600 text-base sm:text-lg max-w-md mx-auto lg:mx-0"
           >
-            We are happy because we have happy customers — customer satisfaction
+            We are happy because we have happy customers customer satisfaction
             is a matter of pride for us. Thank you to all our amazing clients.
           </motion.p>
         </div>

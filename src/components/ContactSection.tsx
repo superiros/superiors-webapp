@@ -205,9 +205,9 @@ export const ContactSection = () => {
                     <option value="content-management">Content Management</option>
                     <option value="website">Website Development</option>
                     <option value="app">App Development</option>
-                    <option value="ai">AI Software</option>
+                    <option value="aiads">AI Ads</option>
                     <option value="consultation">Free Consultation</option>
-                  </select>
+                  </select> 
                   {errors.service && (
                     <p className="mt-1 text-sm text-red-500">{errors.service.message}</p>
                   )}

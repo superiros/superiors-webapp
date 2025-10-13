@@ -9,7 +9,7 @@ const services = [
   },
   {
     title: 'Branding',
-    desc: 'Build a brand that speaks for itself — clear, consistent, and unforgettable across every platform.',
+    desc: 'Build a brand that speaks for itself clear, consistent, and unforgettable across every platform.',
     img: '/images/webdev.jpg',
   },
   {
