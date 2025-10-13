@@ -50,7 +50,7 @@ export const HeroSection = () => {
           </h1>
 
           {/* Annotation (hidden on small screens) */}
-          <div className="absolute top-4 right-2 md:right-20 lg:right-32 hidden md:block">
+          {/* <div className="absolute top-4 right-2 md:right-20 lg:right-32 hidden md:block">
             <div className="transform rotate-6">
               <div className="text-lg font-bold text-gray-800 relative inline-block">
                 Elevate
@@ -81,7 +81,7 @@ export const HeroSection = () => {
                 />
               </svg>
             </div>
-          </div>
+          </div> */}
 
           <p className="text-gray-600 text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto mt-4 sm:mt-6 leading-relaxed">
             Boost Your Brand with High-Impact Short Videos from our expert content creators. <br className="hidden sm:block"/> 
@@ -127,7 +127,7 @@ export const HeroSection = () => {
         {/* CTA Section */}
         <div className="text-center relative mt-20 sm:mt-32 z-10">
           {/* “It’s free” Annotation (hidden on small) */}
-          <div className="absolute left-1/2 -translate-x-40 md:-translate-x-56 -top-10 hidden md:block">
+          {/* <div className="absolute left-1/2 -translate-x-40 md:-translate-x-56 -top-10 hidden md:block">
             <svg width="140" height="90" viewBox="0 0 140 90" className="text-gray-800">
               <path
                 d="M120 15 Q80 50 30 60"
@@ -147,7 +147,7 @@ export const HeroSection = () => {
             <span className="absolute top-8 left-16 text-lg font-bold text-gray-700 transform -rotate-12 font-handwriting">
               It's free
             </span>
-          </div>
+          </div> */}
 
           <button className="bg-gradient-to-r from-red-400 to-orange-400 text-white px-8 sm:px-12 py-3 sm:py-4 rounded-full text-base sm:text-lg font-semibold hover:shadow-2xl transform hover:scale-105 transition-all duration-300 shadow-lg">
             Get Started

@@ -4,32 +4,32 @@ import { Button } from '@/components/ui/button';
 const services = [
   {
     title: 'Web Dev',
-    desc: 'We help you build a brand that speaks for itself, clear, consistent, and memorable. From logo design to visual identity.',
+    desc: 'We craft fast, responsive, and secure websites that elevate your digital presence and drive real results.',
     img: '/images/branding.jpg',
   },
   {
     title: 'Branding',
-    desc: 'We build fast, responsive, and scalable websites tailored to your needs. From front-end to back-end, our focus is on clean code.',
+    desc: 'Build a brand that speaks for itself — clear, consistent, and unforgettable across every platform.',
     img: '/images/webdev.jpg',
   },
   {
     title: 'Video Creation',
-    desc: 'Designing user interfaces and experiences that delight and engage users while achieving business goals.',
+    desc: 'Transform ideas into stunning visuals that captivate audiences and tell your brand’s story powerfully.',
     img: '/images/videocreation.jpg',
   },
   {
     title: 'Social Media',
-    desc: 'Boost your brand visibility with SEO, social media campaigns, and performance marketing strategies.',
+    desc: 'Grow your audience with creative content, smart strategies, and data-driven social media campaigns.',
     img: '/images/social_media.jpg',
   },
   {
     title: 'AI Ads',
-    desc: 'We create high-performance mobile apps for Android and iOS that users love and businesses trust.',
+    desc: 'Leverage AI-powered advertising to reach the right audience, boost engagement, and maximize ROI.',
     img: '/images/appdev.jpg',
   },
   {
     title: 'Graphic Design',
-    desc: 'Our content strategies ensure your brand connects effectively through compelling storytelling and design.',
+    desc: 'Delivering designs that inspire from sleek visuals to complete brand identities that stand out.',
     img: '/images/graphic.jpg',
   },
 ];

@@ -6,8 +6,8 @@ const projects = [
   { title: 'Brand Identity', img: '/images/brandingproject.jpg' },
   { title: 'Creative Ads', img: '/images/ads.jpg' },
   { title: 'Lip Whip Campaign', img: '/images/lipwhip.jpg' },
-  { title: 'Forle Thilvs', img: '/images/forle.jpg' },
   { title: 'GUCCI', img: '/images/gucci.jpg' },
+  { title: 'Forle Thilvs', img: '/images/forle.jpg' },
 ];
 
 const ProjectsSection = () => {
@@ -42,12 +42,12 @@ const ProjectsSection = () => {
       {/* Projects Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {projects.map((project, index) => (
-          <div
-            key={index}
-            className={`project-card opacity-0 translate-y-8 transition-all duration-700 ease-out bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transform ${
-              project.title === 'Capsules' ? 'sm:col-span-2' : ''
-            }`}
-          >
+        <div
+          key={index}
+          className={`project-card opacity-0 translate-y-8 transition-all duration-700 ease-out bg-white rounded-2xl shadow-md hover:shadow-xl hover:scale-[1.02] transform
+            ${(project.title === 'Capsules' || project.title === 'GUCCI') ? 'sm:col-span-2' : ''}`}
+        >
+
             <div className="overflow-hidden rounded-2xl">
               <img
                 src={project.img}
