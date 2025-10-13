@@ -94,7 +94,7 @@ export const Navigation: React.FC<NavigationProps> = ({ onSectionClick }) => {
             </motion.button> */}
             <motion.button
               onClick={() => handleNavClick('signup')}
-              className="bg-gray-800 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition"
+              className="bg-gradient-to-r from-red-400 to-orange-400 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-gray-700 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
